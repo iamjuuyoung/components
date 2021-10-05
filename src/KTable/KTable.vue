@@ -17,6 +17,7 @@
   </table>
 </template>
 
+
 <script>
 import KTableRow from '../KTableRow/KtableRow.vue'
 export default {
