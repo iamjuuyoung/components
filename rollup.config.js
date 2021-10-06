@@ -4,7 +4,7 @@ import commonjs from "@rollup/plugin-commonjs";
 import vue from "rollup-plugin-vue";
 import postcss from "rollup-plugin-postcss";
 import packageJson from "./package.json";
-
+import alias from "@rollup/plugin-alias";
 export default {
   input: "src/index.js",
   output: [
@@ -19,7 +19,16 @@ export default {
       sourcemap: true
     }
   ],
-  plugins: [peerDepsExternal(), resolve(), commonjs(), vue(),
+  plugins: [
+    alias({
+      entries: [
+        {
+          find: '@',
+          replacement: `${__dirname}/src/`
+        }
+      ]
+    }),
+    peerDepsExternal(), resolve(), commonjs(), vue(),
       postcss({
       extract: false,
       modules: true,
