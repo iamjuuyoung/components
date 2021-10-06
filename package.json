@@ -1,6 +1,6 @@
 {
   "name": "@iamjuuyoung/components",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "A Vue component library skeleton using TypeScript, Rollup and Storybook",
   "main": "lib/index.js",
   "module": "lib/index.esm.js",
@@ -25,6 +25,7 @@
     "@storybook/addon-links": "^6.3.9",
     "@storybook/vue": "^6.3.9",
     "babel-loader": "^8.2.2",
+    "path": "^0.12.7",
     "rollup": "^2.23.1",
     "rollup-plugin-peer-deps-external": "^2.2.3",
     "rollup-plugin-vue": "^5.1.6",
