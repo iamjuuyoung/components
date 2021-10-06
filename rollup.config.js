@@ -3,10 +3,7 @@ import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import vue from "rollup-plugin-vue";
 import postcss from "rollup-plugin-postcss";
-
 import packageJson from "./package.json";
-import alias from "@rollup/plugin-alias";
-
 
 export default {
   input: "src/index.js",
@@ -22,20 +19,8 @@ export default {
       sourcemap: true
     }
   ],
-  plugins: [
-    alias({
-      entries: [
-        {
-          find: '@',
-          replacement: './src'
-        }
-      ]
-    }),
-    peerDepsExternal(),
-    resolve(),
-    vue(),
-    commonjs(),
-    postcss({
+  plugins: [peerDepsExternal(), resolve(), commonjs(), vue(),
+      postcss({
       extract: false,
       modules: true,
       use: ["sass"],
