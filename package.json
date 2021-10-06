@@ -1,6 +1,6 @@
 {
   "name": "@iamjuuyoung/components",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "A Vue component library skeleton using TypeScript, Rollup and Storybook",
   "main": "lib/index.js",
   "module": "lib/index.esm.js",

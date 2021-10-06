@@ -19,7 +19,7 @@
 
 
 <script>
-import KTableRow from '@/KTableRow/KtableRow.vue';
+import KTableRow from 'src/KTableRow/KtableRow.vue';
 export default {
   name: 'KTable',
   props: {
