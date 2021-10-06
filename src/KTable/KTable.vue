@@ -19,7 +19,7 @@
 
 
 <script>
-import KTableRow from '../KTableRow/KtableRow.vue'
+import KTableRow from '@/KTableRow/KtableRow.vue';
 export default {
   name: 'KTable',
   props: {
@@ -37,11 +37,4 @@ export default {
 }
 </script>
 
-<style>
-th {
-  text-align: left;
-  padding: 8px;
-  font-size: 13px;
-  color: #8d8d92;
-}
-</style>
+
