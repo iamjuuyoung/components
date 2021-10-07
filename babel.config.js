@@ -1,9 +1,4 @@
 module.exports = {
-  presets: ['@babel/preset-env', ['@vue/app', {
-    polyfills: [
-      'es.promise',
-      'es.symbol'
-    ]
-  }]],
+  presets: ['@babel/preset-env'],
   plugins: ["@babel/plugin-transform-modules-commonjs"]
 }

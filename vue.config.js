@@ -3,7 +3,6 @@ const path = require('path');
 
 module.exports = {
     configureWebpack: {
-        entry: ['babel-polyfill', './src/index.js'],
         resolve: {
             alias: {
                 '@': path.join(__dirname, 'src/')
