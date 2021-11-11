@@ -9,17 +9,11 @@
         {{ label }}
       </th>
     </tr>
-    <KTableRow
-      v-for="(values, index) in items"
-      :key="index"
-      :values="values"
-    />
   </table>
 </template>
 
 
 <script>
-import KTableRow from '@/KTableRow/KtableRow.vue';
 export default {
   name: 'KTable',
   props: {
@@ -31,9 +25,6 @@ export default {
       required: true
     }
   },
-  components: {
-    KTableRow
-  }
 }
 </script>
 
