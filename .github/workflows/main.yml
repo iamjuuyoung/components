@@ -1,3 +1,7 @@
+
+
+
+
 # This is a basic workflow to help you get started with Actions
 
 name: Publish
@@ -26,8 +30,9 @@ jobs:
       - name: build
         run: |
           npm run build
-  
-   publish:
+          
+publish:
+    needs: checkVersion
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -38,7 +43,4 @@ jobs:
           node-version: '10.10.0'
           registry-url: 'https://npm.pkg.github.com',
       - run: npm publish   
-      
-
- 
-      
+    
