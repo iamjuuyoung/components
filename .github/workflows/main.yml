@@ -36,6 +36,7 @@ jobs:
         if: steps.node-cache.outputs.cache-hit != 'true'
         run: npm install
       - run: npm run build
+      - run: git pull origin main
       - run: npm version patch
       - run: git push origin main --tags
       - run: npm publish
