@@ -21,9 +21,7 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 12
-          registry-url: https://npm.pkg.github.com  
-        env:
-          NPM_GPR_TOKEN: ${{ secrets.GPR_TOKEN }}  
+          registry-url: https://npm.pkg.github.com   
         
     
       - name: Cache node modules
@@ -39,9 +37,13 @@ jobs:
       - name: Install Dependencies
         if: steps.node-cache.outputs.cache-hit != 'true'
         run: npm install
+        env:
+          NPM_GPR_TOKEN: ${{ secrets.GPR_TOKEN }} 
        
         
       - run: npm run build
+        env:
+          NPM_GPR_TOKEN: ${{ secrets.GPR_TOKEN }} 
       - run: npm version patch --no-git-tag-version
       - run: |
           git config --global user.email "summer94@krafton.com"
