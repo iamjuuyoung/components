@@ -1,3 +1,7 @@
+
+
+
+
 # This is a basic workflow to help you get started with Actions
 
 name: Publish
@@ -9,27 +13,30 @@ on:
     branches: [ main ]
 
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  checkVersion:
-    name: Check package version
+  publish-github-registry:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: npm install
-        run: |
-          npm install
-      - name: build
-        run: |
-          npm run build
-      - name: version
-        run: |
-          npm version patch
-      - name: publish
-        run: |
-          npm publish
-      
-
- 
-      
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+          registry-url: https://npm.pkg.github.com
+      - name: Cache node modules
+        id: node-cache
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-modules-
+      - name: Install Dependencies
+        if: steps.node-cache.outputs.cache-hit != 'true'
+        run: npm install
+      - run: npm run build
+      - run: npm version patch --no-git-tag-version
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
