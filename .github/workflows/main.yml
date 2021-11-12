@@ -22,6 +22,7 @@ jobs:
         with:
           node-version: 12
           registry-url: https://npm.pkg.github.com
+          auth-token: ${{ secrets.GPR_TOKEN }}
     
       - name: Cache node modules
         id: node-cache
