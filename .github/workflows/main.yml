@@ -24,7 +24,7 @@ jobs:
           registry-url: https://npm.pkg.github.com  
           
       - name: Setup npmrc
-        run: echo "//npm.pkg.github.com/:_authToken=${{secrets.GPR_TOKEN}}" > .npmrc    
+        run: echo "//registry.npmjs.org/:_authToken=${{secrets.NPM_AUTH_TOKEN}}" > .npmrc    
     
       - name: Cache node modules
         id: node-cache
