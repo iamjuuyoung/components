@@ -1,17 +1,17 @@
 <template>
   <div class="list-item">
     <input type="text" readonly :value="task.title" />
-    <KInputTimer />
+    <!-- <KInputTimer /> -->
   </div>
 </template>
 
 <script>
-import { KInputTimer } from '@krafton-infosys/k-components';
+// import { KInputTimer } from '@krafton-infosys/k-components';
 
   export default {
     name: 'Task',
     components: {
-      KInputTimer,
+      // KInputTimer,
     },
     props: {
       task: {
