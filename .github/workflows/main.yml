@@ -37,8 +37,7 @@ jobs:
       - name: Install Dependencies
         if: steps.node-cache.outputs.cache-hit != 'true'
         run: npm install
-        env:
-          GPR_TOKEN: ${{ secrets.GPR_TOKEN }}
+      
         
       - run: npm run build
       - run: npm version patch --no-git-tag-version
