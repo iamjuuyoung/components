@@ -29,6 +29,7 @@ jobs:
         uses: actions/cache@v2
         env:
           cache-name: cache-node-modules
+          NPM_GPR_TOKEN: ${{ secrets.GPR_TOKEN }} 
         with:
           path: node_modules
           key: ${{ runner.os }}-node-modules-${{ hashFiles('**/package-lock.json') }}
@@ -37,13 +38,11 @@ jobs:
       - name: Install Dependencies
         if: steps.node-cache.outputs.cache-hit != 'true'
         run: npm install
-        env:
-          NPM_GPR_TOKEN: ${{ secrets.GPR_TOKEN }} 
+
        
         
       - run: npm run build
-        env:
-          NPM_GPR_TOKEN: ${{ secrets.GPR_TOKEN }} 
+
       - run: npm version patch --no-git-tag-version
         env:
           NPM_GPR_TOKEN: ${{ secrets.GPR_TOKEN }} 
@@ -55,4 +54,4 @@ jobs:
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
-          NPM_GPR_TOKEN: ${{ secrets.GPR_TOKEN }} 
+
