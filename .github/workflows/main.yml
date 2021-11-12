@@ -45,6 +45,8 @@ jobs:
         env:
           NPM_GPR_TOKEN: ${{ secrets.GPR_TOKEN }} 
       - run: npm version patch --no-git-tag-version
+        env:
+          NPM_GPR_TOKEN: ${{ secrets.GPR_TOKEN }} 
       - run: |
           git config --global user.email "summer94@krafton.com"
           git config --global user.name "leejuyoung"
@@ -53,3 +55,4 @@ jobs:
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          NPM_GPR_TOKEN: ${{ secrets.GPR_TOKEN }} 
