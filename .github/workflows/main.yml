@@ -24,7 +24,7 @@ jobs:
           registry-url: https://npm.pkg.github.com
           
       - name: Setup npmrc
-        run: echo "//npm.pkg.github.com/:_authToken=${{secrets.GPR_TOKEN}}" > .npmrc    
+        run: echo "@krafton-infosys:registry=https://npm.pkg.github.com //npm.pkg.github.com/:_authToken=${{secrets.GPR_TOKEN}}" > .npmrc    
     
       - name: Cache node modules
         id: node-cache
