@@ -37,7 +37,7 @@ jobs:
         run: npm install
       - run: npm run build
       - run: git pull origin main
-      - run: npm version patch
+      - run: npm version patch --no-git-tag-version
       - run: git push origin main --tags
       - run: npm publish
         env:
