@@ -16,6 +16,8 @@ on:
 jobs:
   publish-github-registry:
     runs-on: ubuntu-latest
+    env:
+      NPM_GPR_TOKEN: ${{ secrets.GPR_TOKEN }} 
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
@@ -29,7 +31,6 @@ jobs:
         uses: actions/cache@v2
         env:
           cache-name: cache-node-modules
-          NPM_GPR_TOKEN: ${{ secrets.GPR_TOKEN }} 
         with:
           path: node_modules
           key: ${{ runner.os }}-node-modules-${{ hashFiles('**/package-lock.json') }}
@@ -39,13 +40,10 @@ jobs:
         if: steps.node-cache.outputs.cache-hit != 'true'
         run: npm install
 
-       
-        
       - run: npm run build
 
       - run: npm version patch --no-git-tag-version
-        env:
-          NPM_GPR_TOKEN: ${{ secrets.GPR_TOKEN }} 
+ 
       - run: |
           git config --global user.email "summer94@krafton.com"
           git config --global user.name "leejuyoung"
