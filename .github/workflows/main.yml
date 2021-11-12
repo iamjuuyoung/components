@@ -22,9 +22,7 @@ jobs:
         with:
           node-version: 12
           registry-url: https://npm.pkg.github.com  
-          
-      - name: Setup npmrc
-        run: echo "/npm.pkg.github.com/:_authToken=${{ secrets.GPR_TOKEN}}" > .npmrc    
+        
     
       - name: Cache node modules
         id: node-cache
@@ -39,6 +37,8 @@ jobs:
       - name: Install Dependencies
         if: steps.node-cache.outputs.cache-hit != 'true'
         run: npm install
+        env:
+          GPR_TOKEN: ${{ secrets.GPR_TOKEN }}
         
       - run: npm run build
       - run: npm version patch --no-git-tag-version
