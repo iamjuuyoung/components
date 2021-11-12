@@ -12,7 +12,6 @@
   </table>
 </template>
 
-
 <script>
 export default {
   name: 'KTable',
