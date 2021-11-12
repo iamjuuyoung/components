@@ -39,8 +39,11 @@ jobs:
         
       - run: npm run build
       - run: npm version patch --no-git-tag-version
-      - run: git commit -am "version upgrade"
-      - run: git push origin main --tags
+      - run: |
+          git config --global user.email "summer94@krafton.com"
+          git config --global user.name "leejuyoung"
+          git commit -am "version upgrade"
+          git push origin main --tags
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
