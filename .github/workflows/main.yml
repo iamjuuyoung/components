@@ -15,7 +15,8 @@ on:
 env:
   CACHED_DEPENDENCY_PATHS: ${{ github.workspace }}/node_modules
   CACHED_BUILD_PATHS: ${{ github.workspace }}/.next
-  BUILD_CACHE_KEY: ${{ github.sha }}    
+  BUILD_CACHE_KEY: ${{ github.sha }}  
+  NPM_GPR_TOKEN: ${{ secrets.GPR_TOKEN }} 
 
 
 jobs:
