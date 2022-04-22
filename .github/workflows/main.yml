@@ -18,7 +18,6 @@ env:
   BUILD_CACHE_KEY: ${{ github.sha }}  
   NPM_GPR_TOKEN: ${{ secrets.GPR_TOKEN }} 
 
-
 jobs:
   job_install_dependencies:
     name: Install Dependencies
