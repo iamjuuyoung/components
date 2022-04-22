@@ -75,7 +75,7 @@ jobs:
           git stash pop
           npm version patch
           git config --global user.email "summer94@krafton.com"
-          git config --global user.name "ieejuyoung"
+          git config --global user.name "leejuyoung"
           git commit -am "version upgrade"
           git pull origin master
           git push origin master --tags
