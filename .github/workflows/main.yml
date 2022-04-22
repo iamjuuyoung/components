@@ -70,6 +70,9 @@ jobs:
         if: steps.cache_built_packages.outputs.cache-hit == ''
         run: |
           npm run build
+          git stash 
+          npm version patch 
+          git stash pop
           npm version patch
           git commit -am "version upgrade"
           git pull origin master
