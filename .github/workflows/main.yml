@@ -67,15 +67,7 @@ jobs:
           path: ${{ env.CACHED_BUILD_PATHS }}
           key: ${{ env.BUILD_CACHE_KEY }}
       - name: Build packages
-      
-      - run: npm run build
-      - run: npm version patch
-      - run: |
-          git config --global user.email "leejuuyoung@krafton.com"
-          git config --global user.name "iamjuuyoung"
-          git commit -am "version upgrade"
-          git pull origin master
-          git push origin master --tags
-      - run: npm publish
+        if: steps.cache_built_packages.outputs.cache-hit == ''
+        run: npm run build
     outputs:
       dependency_cache_key: ${{ needs.job_install_dependencies.outputs.dependency_cache_key }}
